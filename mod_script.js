@@ -11,9 +11,9 @@ db.serialize(() => {
 
 // E.x. modifyPermissions(discordId,rankList[0]) || modifyPermissions(discordId,"mod")
 const modifyPermissions = (discordId, rank) =>{
-    db.run("UPDATE accounts set Rank = ? WHERE DiscordId = ?", [rank, discordId], (err) => {
+    db.run("UPDATE accounts set Rank = ? WHERE DiscordId = ?", [rank, BigInt(discordId)], (err) => {
         if (err) { console.error(err.message);}
         console.log("Changed Rank for discordId: "+discordId+" to "+rank);
     });
 }
-modifyPermissions(219185683447808001, 'banned')
+modifyPermissions("219185683447808001", 'banned')
